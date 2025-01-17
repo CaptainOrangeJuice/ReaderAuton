@@ -54,7 +54,7 @@ void pre_auton(void) {
 /*---------------------------------------------------------------------------*/
 
 void autonomous(void) {
-  int nRead = Brain.SDcard.loadfile( "V_BLUE_LEFT.dat", (uint8_t*)inputs, sizeof(inputs));
+  int nRead = Brain.SDcard.loadfile( "V_BLUE_RIGHT.dat", (uint8_t*)inputs, sizeof(inputs));
   
   if (nRead == sizeof(inputs)) {
     
@@ -181,14 +181,14 @@ void usercontrol(void) {
     // for(int i=0;i<25;i++) { Brain.Screen.print(myData[i]); printToConsole(myData[i]); }
     //Brain.SDcard.savefile( "test", (uint8_t*)myData, sizeof(myData) );
     if (Controller1.ButtonDown.pressing() && Controller1.ButtonLeft.pressing()) {
-      Brain.SDcard.savefile( "V_BLUE_LEFT.dat", (uint8_t*)inputs, sizeof(inputs) );
+      Brain.SDcard.savefile( "V_BLUE_RIGHT.dat", (uint8_t*)inputs, sizeof(inputs) );
       printToConsole("Data saved."); Controller1.Screen.print("Data saved.");
       wait(1, sec);
     }
 
     if (Controller1.ButtonDown.pressing() && Controller1.ButtonRight.pressing()) {
-      Brain.SDcard.savefile( "V_BLUE_LEFT.dat", (uint8_t*)emptyData, sizeof(emptyData) );
-      int nRead = Brain.SDcard.loadfile( "V_BLUE_LEFT.dat", (uint8_t*)checkData, sizeof(checkData));
+      Brain.SDcard.savefile( "V_BLUE_RIGHT.dat", (uint8_t*)emptyData, sizeof(emptyData) );
+      int nRead = Brain.SDcard.loadfile( "V_BLUE_RIGHT.dat", (uint8_t*)checkData, sizeof(checkData));
       printToConsole("DATA RESET. RUN PROGRAM AGAIN TO INPUT DATA."); Controller1.Screen.print("Data cleared."); Controller1.rumble(".");
       if (nRead == sizeof(inputs)) {
         wait(0.5, sec);
