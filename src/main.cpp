@@ -189,7 +189,7 @@ void usercontrol(void) {
     if (Controller1.ButtonDown.pressing() && Controller1.ButtonRight.pressing()) {
       Brain.SDcard.savefile( "V_BLUE_LEFT.dat", (uint8_t*)emptyData, sizeof(emptyData) );
       int nRead = Brain.SDcard.loadfile( "V_BLUE_LEFT.dat", (uint8_t*)checkData, sizeof(checkData));
-      printToConsole("DATA RESET. RUN PROGRAM AGAIN TO INPUT DATA.");
+      printToConsole("DATA RESET. RUN PROGRAM AGAIN TO INPUT DATA."); Controller1.Screen.print("Data cleared.");
       if (nRead == sizeof(inputs)) {
         wait(0.5, sec);
         printToConsole("wait");
